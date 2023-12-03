@@ -3,10 +3,14 @@ import axios from "axios";
 
 const useGetProducts = (API) => {
   const [products, setProducts] = useState([]);
-  useEffect(async () => {
-    const response = await axios(API);
-    setProducts(response.data);
+  useEffect( () => {
+    async function getProducts () {
+      const response = await axios(API);
+      setProducts(response.data);
+    }
+getProducts();
   }, []);
+
   return products;
 };
 
